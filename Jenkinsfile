@@ -1,6 +1,15 @@
+@Library('SL1')_
+
 pipeline
 {
    agent any
+   environment
+   {
+       deploy_user='ubuntu'
+       ip='52.47.190.123'
+       key='rs1'
+       gitURL='https://github.com/AMRUTHASALIKE/JavaSample.git'
+   }
    /*
    agent 
     {
@@ -14,6 +23,15 @@ pipeline
     }*/
     stages
     {
+          stage('Welcome') 
+   {
+     //sh 'user=$BUILD_USER'
+     script
+     {
+     echo 'Hello'
+     welcomeMsg deploy_user
+     }
+   }
     stage('Build')
     {
        steps
