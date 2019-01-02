@@ -26,11 +26,15 @@ pipeline
           stage('Welcome') 
    {
      //sh 'user=$BUILD_USER'
+      
+       steps
+        {
      script
      {
      echo 'Hello'
      welcomeMsg deploy_user
      }
+        }
    }
     stage('Build')
     {
