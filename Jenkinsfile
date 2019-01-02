@@ -32,7 +32,7 @@ pipeline
      script
      {
      echo 'Hello'
-        echo ${deploy_user}
+        echo $deploy_user
      welcomeMsg deploy_user
      }
         }
