@@ -24,44 +24,43 @@ pipeline
     stages
     {
           stage('Welcome') 
-   {
+          {
      //sh 'user=$BUILD_USER'
       
-       steps
-        {
-     script
-     {
-     echo 'Hello'
-        echo deploy_user
-     welcomeMsg deploy_user
-     }
-        }
-   }
-    stage('Build')
-    {
-       steps
-        {
-       sh 'pwd'
-       dir('SpringMVCSecurityXML') 
-       {
-            // some block
-            sh 'pwd'
-            sh 'mvn clean install'
-            sh 'touch file1'
-       }
-       sh 'pwd'
-        }
-    }
-    stage('Deploy')
-    {
-        steps
-        {
-        dir('SpringMVCSecurityXML/target') 
-       {
-            // some block
-            sh 'sudo cp SpringMVCSecurityXML.war /var/lib/tomcat8/webapps'
-       }
-        }
-    }
-    }
+            steps
+            {
+               script
+               {
+                  echo 'Hello'
+                  echo deploy_user
+                  welcomeMsg deploy_user
+               }
+            }
+          }
+          stage('Build')
+          {
+             steps
+              {
+                sh 'pwd'
+                dir('SpringMVCSecurityXML') 
+                {
+                     // some block
+                     sh 'pwd'
+                     sh 'mvn clean install'
+                }
+                sh 'pwd'
+              }
+          }
+          stage('Deploy')
+          {
+              steps
+              {
+                 dir('SpringMVCSecurityXML/target') 
+                 {
+                     // some block
+                     sh 'sudo cp SpringMVCSecurityXML.war /var/lib/tomcat8/webapps'
+                 }
+              }
+          }
+      }
 }
